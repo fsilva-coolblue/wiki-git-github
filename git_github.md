@@ -38,40 +38,55 @@ a set of advantages:
 
 - With git you can track changes to your work and revert when something goes
 wrong
-  (Advantage versus having no version control at all)
-- You can work offline without a hitch
-  (Try working in SVN without access to the server)
+  An advantage versus having no version control at all.
+- You can work offline without a hitch.
+  Try working in SVN without access to the server
 - There are effectively multiple backups of the code
-  (Since everyone has a repository, each person has a complete copy of the whole
-   history of the code)
+  Since everyone has a repository, each person has a complete copy of the whole
+   history of the code.
 - It is faster
   You don't have to wait for anyone else for (almost) anything. And the program
-  itself was built thinking of speed.
+   itself was built thinking of speed.
 - It's easier to collaborate
-  (Since everyone has a repository, anyone can work in any part of the code
+  Since everyone has a repository, anyone can work in any part of the code
    without getting on someone else's toes. You can also get someone else's code
    without having to go through the central repository first. This can be useful
-   for reviewing.)
+   for reviewing.
 - No more branch/merge fear
-  (Compared to previous version control systems, git allows for *much* easier
+  Compared to previous version control systems, git allows for *much* easier
    branching and merging. We'll see this later, but for now let's just say that
    the ability to switch between branches whenever you'd like and merge them
-   (nearly) without any problems is *really* nice.)
+  (nearly) without any problems is *really* nice.
 - More agile workflows
-  (The ability to branch and merge easily allows for some interesting and very
-   helpful workflows (which, again, we'll talk about later))
+  The ability to branch and merge easily allows for some interesting and very
+   helpful workflows (which, again, we'll talk about later).
 - Used everywhere
   If nothing else convinces you, just know that *a lot* of projects use it. From
-  very small ones (e.g. a lot of stuff that's on github) to big ones (e.g. the
-  Linux kernel). So, it's not some newfangled curiosity that's going
-  away in a few months. It's here to stay.
+   very small ones (e.g. a lot of stuff that's on github) to big ones (e.g. the
+   Linux kernel). So, it's not some newfangled curiosity that's going
+   away in a few months. It's here to stay.
+
+For some more material, check
+[this](http://www.git-tower.com/blog/8-reasons-for-switching-to-git/) out.
 
 Convinced now?
 Then, let's take a look at how git works and how you should work with it.
 
-##How does it work?!
+##How do I work with it?!
 
 First, the basics:
+
+##Clients
+
+To work with git, you need to have a client.
+If you're more of a ~geek~ technical-minded person, you can use the command
+line (with a fairly detailed tutorial
+        [here](http://guides.beanstalkapp.com/version-control/git-on-windows.html)),
+or a GUI like
+[SourceTree](https://sites.google.com/a/coolblue.nl/it-wiki/algemeen/version-control/github/sourcetree-git-gui).
+(But please don't use TortoiseGit. It really doesn't help when you want to use
+ git the right way)
+
 
 ###3 Sections
 
@@ -94,3 +109,11 @@ Git divides your workspace into 3 sections:
 
 
 ####Basic workflow
+
+Here's how you can work, in the most basic way, with git:
+
+1. Get a repository
+   Of course, you'll always need to have a repository. If you're using the
+   command line, you can actually create it anew with `git init` (in the project
+   folder). SourceTree doesn't allow this, for some reason. But you can also
+   *clone* another repository and start from there.
