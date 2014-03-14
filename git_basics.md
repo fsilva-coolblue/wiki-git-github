@@ -1,4 +1,4 @@
-#Git and Github - What, Why and How?
+#Git - What, Why and How?
 
 ##What is git?
 
@@ -92,7 +92,7 @@ or a GUI like
 
 Git divides your workspace into 3 sections:
 
-![Git - 3 sections](3sectionsimage.png)
+![Git - 3 sections](img/3sections.png)
 
 - Working directory (also called working copy)
   This is what you work on. The working directory includes any new files
@@ -117,3 +117,82 @@ Here's how you can work, in the most basic way, with git:
    command line, you can actually create it anew with `git init` (in the project
    folder). SourceTree doesn't allow this, for some reason. But you can also
    *clone* another repository and start from there.
+2. Work
+   This is the easy part. Just do your thing. Create, delete, and edit files.
+   Make your colleagues proud.
+3. Add files to the staging area
+   In the command line you do `git add <files>`. You can actually do a lot of
+   neat tricks here (e.g. add certain lines and not others), but for now just
+   stick to this. In SourceTree you drag the files you want to add to the
+   staging area, like this:
+   ![SourceTree - Adding files](img/sourcetree-adding.png)
+   You can also see (pointed out in blue) untracked files. Until you
+   specifically add them, git does not track these files and just leaves them
+   alone. Here's how it looks in the command line:
+   ![Command line - Staging area](img/cmdline-staging.png)
+   Now you're ready to...
+4. Commit your changes
+   Here is when you actually send your changes to the repository. After this,
+   they're safe.
+   In the command line, you use the `git commit` command.
+   ![Command line - Committing](img/cmdline-commit.png)
+   In SourceTree, just press the `Commit` button.
+   ![SourceTree - Committing](img/sourcetree-commit.png)
+   In SourceTree you can still change the staging area and configure your commit
+   at this point, but is the same as if you did it earlier.
+   In both clients you must write a commit message. Unlike other version control
+   systems, git forces you to write one. Try to write [good commit
+   messages](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
+   They may not look too important, but they *really* help when something goes
+   wrong and you have to find out where.
+
+####Commits
+
+Changes are stored in the repository under sequential commit objects. Each
+commit is uniquely identified by a hash value. You can see them in the command
+line using `git log`:
+![Command line - Log](img/cmdline-log.png)
+Or, in SourceTree, by just clicking on a branch.
+![SourceTree - Log](img/sourcetree-log.png)
+(You can also have fancy graphs in the command line, but it does take a little
+ more work).
+
+####Checkout
+
+Sometimes you just need to travel back in time. It's a fact of (developer) life.
+In git that's done by *checking out* a commit (you usually do this with branches
+rather than directly to commits, but we'll see that later).
+In the command line, you do `git checkout 4035e4`. As you can see, you can use
+an abbreviation for a commit instead (as long as it isn't ambiguous).
+In SourceTree, you press the `Checkout` button and select a commit.
+Either way, this will replace the contents of your working copy with the
+how it was at the time of the selected commit.
+
+####Stashing
+
+It may happen that you have made some changes and suddenly you need to do
+something else (fix a bug in a previous version, merge branches, etc.), but your
+changes are not ready to be committed yet. This is when you stash them. Stashing
+takes the current state of your working directory and saves it in a stack of
+unfinished changes, which can be reapplied when you need them again (or
+just dropped).
+To stash your changes, do this:
+In the command line: `git stash`.
+Or, if you want to specify a message to make it easier to remember:
+`git stash save "my message"`.
+In SourceTree, just press the `Stash` button, and it will ask you for a descriptive
+message:
+![SourceTree - Stash](img/sourcetree-stash.png)
+This will clear your unfinished changes and leave you free to work on whatever
+you need.
+Once you are done and want to go back to the changes, just use, in the command
+line:
+`git stash pop` (this will apply the latest stash in the stack and remove it),
+Or in SourceTree, right-click the stash you want (under *Stashes*), and select
+`Apply...`:
+![SourceTree - Appy stash](img/sourcetree-stash_apply.png)
+If you want the stash to be deleted after applying (and you normally do) you
+should select `Delete after applying` in the confirmation window that comes up
+then (or just delete it manually after applying).
+
+Next up, [branching](GIT BRANCHING ARTICLE)!
