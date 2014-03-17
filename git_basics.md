@@ -79,7 +79,7 @@ First, the basics:
 ##Clients
 
 To work with git, you need to have a client.
-If you're more of a ~geek~ technical-minded person, you can use the command
+If you're more of a ~geek~ technically-minded person, you can use the command
 line (with a fairly detailed tutorial
         [here](http://guides.beanstalkapp.com/version-control/git-on-windows.html)),
 or a GUI like
@@ -154,7 +154,7 @@ line using `git log`:
 ![Command line - Log](img/cmdline-log.png)
 Or, in SourceTree, by just clicking on a branch.
 ![SourceTree - Log](img/sourcetree-log.png)
-(You can also have fancy graphs in the command line, but it does take a little
+(You can also have fancy graphs in the command line, but it takes a little
  more work).
 
 ####Checkout
@@ -165,7 +165,7 @@ rather than directly to commits, but we'll see that later).
 In the command line, you do `git checkout 4035e4`. As you can see, you can use
 an abbreviation for a commit instead (as long as it isn't ambiguous).
 In SourceTree, you press the `Checkout` button and select a commit.
-Either way, this will replace the contents of your working copy with the
+Either way, this will replace the contents of your working copy with 
 how it was at the time of the selected commit.
 
 ####Stashing
@@ -190,7 +190,7 @@ line:
 `git stash pop` (this will apply the latest stash in the stack and remove it),
 Or in SourceTree, right-click the stash you want (under *Stashes*), and select
 `Apply...`:
-![SourceTree - Appy stash](img/sourcetree-stash_apply.png)
+![SourceTree - Apply stash](img/sourcetree-stash_apply.png)
 If you want the stash to be deleted after applying (and you normally do) you
 should select `Delete after applying` in the confirmation window that comes up
 then (or just delete it manually after applying).
