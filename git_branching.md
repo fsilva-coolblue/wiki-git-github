@@ -109,3 +109,10 @@ branches:
 This creates a new commit (git asks you to write a message for it) for the
 merge, resulting in:
 ![Branching how to - Complex merge result](img/branching/merge-result.png)
+
+Here are some conflicting changes.
+
+These lines will be conflicted because they were inserted in the same place as
+others were, but in a different branch.
+
+This serves to illustrate an external merge.
