@@ -97,14 +97,19 @@ Our repository now looks like this:
 ![Branching how to - Fast forward merge
 result](img/branching/merge-ff-result.png)
  
-###Conflicts
+Now, let's try a more complicated example. Let's say we did some more commits in
+`first_branch`. But then, for some reason (e.g. bug fixes) we also did a
+different commit in `master`. This is how it looks:
+![Branching how to - More commits](img/branching/more-commits.png)
 
-Sometimes, especially when multiple people are working in the same thing
-simultaneously, incompatible changes are made in two branches. When git tries to
-merge these changes this results in a conflict. When conflicts occur, the merge
-is not completed, and git waits for the user to solve the conflict.
+Here a fast-forward merge is not possible, but git still manages to merge the
+branches:
+![Branching how to - Complex merge](img/branching/merge.png)
 
-![Branching how to - Conflicts](img/branching/conflicts.png)
+This creates a new commit (git asks you to write a message for it) for the
+merge, resulting in:
+![Branching how to - Complex merge result](img/branching/merge-result.png)
+
 
 ###Conflicts
 
@@ -172,15 +177,13 @@ You can do that in two ways (for both of them, p4merge must be in your PATH):
   ```bash
   git mergetool --tool=p4merge
   ```
-* In SourceTree:
-  First you need to configure SourceTree to use `p4merge` as an external `diff`
-  and `merge` tool. You do this by going to the `Tools` menu, selecting
-  `Options`, and then `Diff`:
 
-  ![SourceTree - Setting up p4merge](img/branching/sourcetree-p4merge.png)
-
-  There you just have to set `p4merge` as the external `diff` and `merge` tool,
-  as in the image.
+  In both cases, if you don't specify a file, git will ask you to run the merge
+  tool in each of the relevant files (conflicted for `mergetool`, all of them
+  for `difftool`).
+  For more information, check these links:
+  * [Documentation about difftool](http://git-scm.com/docs/git-difftool.html)
+  * [Documentation about mergetool](http://git-scm.com/docs/git-mergetool.html)
 
 * In SourceTree:
   First you need to configure SourceTree to use `p4merge` as an external `diff`
@@ -213,7 +216,32 @@ For merging conflicts, it shows this one:
 
 ![p4merge - File merge](img/branching/p4merge-merge.png)
 
-For selecting changes you can 
+For selecting the changes you want to keep you can either:
+* Choose to use one version completely (click the corresponding symbol,
+  from the ones pointed in red in the picture), or
+* Choose the individual chunk you want to use for each conflict (click one of 
+  the symbols pointed in blue in the picture)
 
-[info about merging with
-p4merge](http://www.perforce.com/perforce/doc.current/manuals/p4v/merging_files.html)
+After choosing the right changes, just save the file and exit p4merge. The
+conflict will be solved, and you just have to `add` and `commit` the files to
+finish the merge.
+
+Check this link for [more info about merging with p4merge](http://www.perforce.com/perforce/doc.current/manuals/p4v/merging_files.html)
+
+
+###Deleting branches
+
+In the end, when everything is done and merged, and you don't need the other
+branch anymore, you can (and usually should) delete it.
+In the command line, you do this:
+```bash
+git branch -d first_branch
+```
+
+In SourceTree, you right-click a branch and choose `Delete <branch>`:
+
+![SourceTree - Delete branch](img/branching/sourcetree-deletebranch.png)
+
+In the end, this is how our repository looks:
+
+![Branching how to - Final state](img/branching/delete.png)
