@@ -195,4 +195,59 @@ If you want the stash to be deleted after applying (and you normally do) you
 should select `Delete after applying` in the confirmation window that comes up
 then (or just delete it manually after applying).
 
+####Ignoring files
+
+Sometimes you really do not want some files to be included. Maybe they're
+user-specific (e.g. Visual Studio user settings files), auto-generated files
+(e.g. compiled executables, logs) or they're just plain uninteresting. You can
+always not add them to the commits, but you'd have to do that every. single.
+time! And believe me, you don't want that.  This is where the `.gitignore` file
+comes in. This is a file that git reads to know what *not* to include in
+commits.  Ignored files will not be shown in `git status` or in SourceTree's
+`Working Copy Changes`. It is (nearly) impossible to commit them by accident,
+and hard to actually add them on purpose, even if you really really want to.
+
+To (un-)ignore files, you edit the `.gitignore` file. In the command line, you
+simply edit it manually in your favorite text editor. In SourceTree you can
+right-click a (still untracked) file and choose `Ignore...`. You can then select
+a few helpful options:
+![SourceTree - Ignoring files](img/sourcetree-ignore.png)
+You can also edit the file directly by either:
+1. Navigating to it and editing it with your favorite editor, or
+2. Going to `Repository Settings` > `Advanced` and pressing `Edit` under
+   `Repository-specific ignore list`:
+    ![SourceTree - Edit ignore file](img/sourcetree-editignore.png)
+
+Here are a few examples of what you can do in a `.gitignore` file:
+```shell
+#This is a comment, it has no real effect
+#Ignore just file foo.txt
+foo.txt
+
+#Ignore all .txt files
+*.txt
+
+#...but actually, track bar.txt
+!bar.txt
+
+#Ignore file baz.txt a few folders down
+foo/bar/baz.txt
+
+#Ignore all the files in the foobar/ directory
+foobar/
+
+#Ignore Foo.cs, boo.cs and zoo.cs (but not, for instance, bzoo.cs)
+[Fbz]oo.cs
+
+#Ignore all .txt files in the blah/ folder, but leave anything under that (e.g. blah/bleh/file.txt)
+blah/*.txt
+
+#Ignore all .txt files in the bleh/ folder and any subfolders
+bleh/**/*.txt
+```
+
+For more info, look at
+[this](http://git-scm.com/book/en/Git-Basics-Recording-Changes-to-the-Repository#Ignoring-Files)
+or run (in the command line) `git help gitignore`.
+
 Next up, [branching](GIT BRANCHING ARTICLE)!
