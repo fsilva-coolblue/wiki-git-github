@@ -109,3 +109,101 @@ branches:
 This creates a new commit (git asks you to write a message for it) for the
 merge, resulting in:
 ![Branching how to - Complex merge result](img/branching/merge-result.png)
+
+
+###Conflicts
+
+Sometimes, especially when multiple people are working in the same thing
+simultaneously, incompatible changes are made in two branches. When git tries to
+merge these changes this results in a conflict. When conflicts occur, the merge
+is not completed, and git waits for the user to solve the conflict.
+
+![Branching how to - Conflicts](img/branching/conflicts.png)
+
+####Solving conflicts manually
+
+The most basic way in which you can solve conflicts is manually, i.e. edit the
+conflicted file directly and solve the conflict there. Conflicting changes are
+left in the file, marked with the commit they belong to:
+
+![Branching how to - Solving conflicts manually](img/branching/conflicts.png)
+(The top name (HEAD) refers to the branch you are merging *into* (HEAD means the
+last commit made in the current branch). The bottom one (first\_branch) refers to
+the branch you are merging *from*).
+
+In this case, the steps to solve conflicts are:
+* Edit the conflicted files so that they are in the "correct" state. Remove the
+  parts you don't want, and fix anything that is wrong.
+    * And don't forget to remove git's conflict marker lines as well
+* `add` the modified files to the staging area
+* `commit` your changes to complete the merge
+
+####Solving conflicts using external tools
+
+Editing the files manually is perfectly fine if the conflicts are small and
+easily manageable. But sometimes things really go wrong and you have more
+complicated commits. In those cases (or, really, if you just prefer a visual
+tool for this) it's better to use a graphical merge tool. These tools show you
+the differences between two files (e.g. between the two versions of the file you
+are trying to merge) and allow you to choose which one you want graphically.
+
+One of those tools is `p4merge`, and you can find it [here](http://www.perforce.com/downloads/Perforce/20-User#10).
+The package includes more tools, but the one we're focusing on is just
+`p4merge` (You can de-select the others when installing):
+
+![Branching how to - Installing p4merge](img/branching/p4merge-install.png)
+
+After installing, you can use `p4merge` to solve conflicts or just check
+differences (diffs) between separate file versions.
+You can do that in two ways (for both of them, p4merge must be in your PATH):
+
+* From the command line:
+  To check a file's differences between the current version and another commit:
+  * Specifying a file:
+  ```bash
+  git diftool --tool=p4merge <other_commit> -- <file>
+  ```
+  * Not specifying a file:
+  ```bash
+  git diftool --tool=p4merge <other_commit>
+  ```
+
+  And for merging conflicts:
+  * Specifying a file:
+  ```bash
+  git mergetool --tool=p4merge <file>
+  ```
+  * Not specifying a file:
+  ```bash
+  git mergetool --tool=p4merge
+  ```
+
+  In both cases, if you don't specify a file, git will ask you to run the merge
+  tool in each of the relevant files (conflicted for `mergetool`, all of them
+  for `difftool`).
+  For more information, check these links:
+  * [Documentation about difftool](http://git-scm.com/docs/git-difftool.html)
+  * [Documentation about mergetool](http://git-scm.com/docs/git-mergetool.html)
+
+* In SourceTree:
+  First you need to configure SourceTree to use `p4merge` as an external `diff`
+  and `merge` tool. You do this by going to the `Tools` menu, selecting
+  `Options`, and then `Diff`:
+
+  ![SourceTree - Setting up p4merge](img/branching/sourcetree-p4merge.png)
+
+  There you just have to set `p4merge` as the external `diff` and `merge` tool,
+  as in the image.
+
+  Then, when to use it:
+  * For differences:
+    Right-click a file you want to diff (in a different commit) and select
+    `External Diff`:
+
+    ![SourceTree - External Diff](img/branching/sourcetree-extdiff.png)
+
+  * For conflicts:
+    Right-click a conflicted file and select `External merge`:
+
+    ![SourceTree - External Merge](img/branching/sourcetree-extmerge.png)
+
