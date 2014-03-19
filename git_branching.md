@@ -97,18 +97,14 @@ Our repository now looks like this:
 ![Branching how to - Fast forward merge
 result](img/branching/merge-ff-result.png)
  
-Now, let's try a more complicated example. Let's say we did some more commits in
-`first_branch`. But then, for some reason (e.g. bug fixes) we also did a
-different commit in `master`. This is how it looks:
-![Branching how to - More commits](img/branching/more-commits.png)
+###Conflicts
 
-Here a fast-forward merge is not possible, but git still manages to merge the
-branches:
-![Branching how to - Complex merge](img/branching/merge.png)
+Sometimes, especially when multiple people are working in the same thing
+simultaneously, incompatible changes are made in two branches. When git tries to
+merge these changes this results in a conflict. When conflicts occur, the merge
+is not completed, and git waits for the user to solve the conflict.
 
-This creates a new commit (git asks you to write a message for it) for the
-merge, resulting in:
-![Branching how to - Complex merge result](img/branching/merge-result.png)
+![Branching how to - Conflicts](img/branching/conflicts.png)
 
 
 ###Conflicts
@@ -207,3 +203,16 @@ You can do that in two ways (for both of them, p4merge must be in your PATH):
 
     ![SourceTree - External Merge](img/branching/sourcetree-extmerge.png)
 
+For file differences, this is the appearance of `p4merge`'s window:
+
+![p4merge - File diff](img/branching/p4merge-diff.png)
+
+
+For merging conflicts, it shows this one:
+
+![p4merge - File merge](img/branching/p4merge-merge.png)
+
+For selecting changes you can 
+
+[info about merging with
+p4merge](http://www.perforce.com/perforce/doc.current/manuals/p4v/merging_files.html)
