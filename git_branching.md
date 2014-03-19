@@ -147,39 +147,41 @@ One of those tools is `p4merge`, and you can find it [here](http://www.perforce.
 The package includes more tools, but the one we're focusing on is just
 `p4merge` (You can de-select the others when installing):
 
-![Branching how to - Installing p4merge](img/branching/p4merge-install.png)
+* In SourceTree:
+  First you need to configure SourceTree to use `p4merge` as an external `diff`
+  and `merge` tool. You do this by going to the `Tools` menu, selecting
+  `Options`, and then `Diff`:
 
-After installing, you can use `p4merge` to solve conflicts or just check
-differences (diffs) between separate file versions.
-You can do that in two ways (for both of them, p4merge must be in your PATH):
+  ![SourceTree - Setting up p4merge](img/branching/sourcetree-p4merge.png)
 
-* From the command line:
-  To check a file's differences between the current version and another commit:
-  * Specifying a file:
-  ```bash
-  git diftool --tool=p4merge <other_commit> -- <file>
-  ```
-  * Not specifying a file:
-  ```bash
-  git diftool --tool=p4merge <other_commit>
-  ```
+  There you just have to set `p4merge` as the external `diff` and `merge` tool,
+  as in the image.
 
-  And for merging conflicts:
-  * Specifying a file:
-  ```bash
-  git mergetool --tool=p4merge <file>
-  ```
-  * Not specifying a file:
-  ```bash
-  git mergetool --tool=p4merge
-  ```
+  Then, when to use it:
+  * For differences:
+    Right-click a file you want to diff (in a different commit) and select
+    `External Diff`:
 
-  In both cases, if you don't specify a file, git will ask you to run the merge
-  tool in each of the relevant files (conflicted for `mergetool`, all of them
-  for `difftool`).
-  For more information, check these links:
-  * [Documentation about difftool](http://git-scm.com/docs/git-difftool.html)
-  * [Documentation about mergetool](http://git-scm.com/docs/git-mergetool.html)
+    ![SourceTree - External Diff](img/branching/sourcetree-extdiff.png)
+
+  * For conflicts:
+    Right-click a conflicted file and select `External merge`:
+
+    ![SourceTree - External Merge](img/branching/sourcetree-extmerge.png)
+
+For file differences, this is the appearance of `p4merge`'s window:
+
+![p4merge - File diff](img/branching/p4merge-diff.png)
+
+
+For merging conflicts, it shows this one:
+
+![p4merge - File merge](img/branching/p4merge-merge.png)
+
+For selecting changes you can 
+
+[info about merging with
+p4merge](http://www.perforce.com/perforce/doc.current/manuals/p4v/merging_files.html)
 
 * In SourceTree:
   First you need to configure SourceTree to use `p4merge` as an external `diff`
