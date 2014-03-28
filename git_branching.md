@@ -37,6 +37,9 @@ your current location. It usually points to a branch (e.g. `master`), meaning
 that you are currently at the tip (the latest commit) of that branch. Think of
 HEAD as a "You are here" marker, because that is exactly what it is.
 
+Check out [this
+post](http://www.gitguys.com/topics/head-where-are-we-where-were-we/) for some more information.
+
 ##How to do it
 
 Ok, let's go for a visual step-by-step tour around git branches.
