@@ -27,6 +27,16 @@ and the default (created along with the repository) is `master`.
 
 ![Git - branches](img/branches.png)
 
+##What is HEAD?
+
+You probably already noticed, sometimes, a reference to something called HEAD.
+You probably wondered "what the heck is this?!". 
+
+HEAD is the commit you are currently in. It is basically a pointer that marks
+your current location. It usually points to a branch (e.g. `master`), meaning
+that you are currently at the tip (the latest commit) of that branch. Think of
+HEAD as a "You are here" marker, because that is exactly what it is.
+
 ##How to do it
 
 Ok, let's go for a visual step-by-step tour around git branches.
@@ -245,3 +255,25 @@ In SourceTree, you right-click a branch and choose `Delete <branch>`:
 In the end, this is how our repository looks:
 
 ![Branching how to - Final state](img/branching/delete.png)
+
+
+###Branching workflow
+
+As we seen, branching in git is pretty easy, and usually simple. That's why,
+contrary to most previous version control systems, in git branching is heavily
+used, and made its way to a lot of developers' daily workflow. There are some
+more complex workflows, such as
+[gitflow](http://nvie.com/posts/a-successful-git-branching-model/), but the
+simplest one follows these guidelines:
+* The `master` branch is for "complete" code. Compilable, running, correct (as
+much as possible) code.
+* Whenever you need to change something or do something new, create a new
+branch (it's called a _feature branch_, since it is created for a new feature),
+give it a suggestive name (e.g. `new_feature`), and check it out.
+* Do the new work only in the new branch. If you need to fix something in
+previous work, switch back to `master` and fix it (ideally create a branch for
+the fix as well).
+* When you're done with the new work (everything must be working and committed), merge the
+new branch back into `master`.
+* Now that all the new changes are back in `master`, you can delete the feature
+branch and start the process all over again.
