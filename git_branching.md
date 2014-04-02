@@ -48,9 +48,16 @@ We start with a normal repository with just a few commits, like this:
 
 ###Create a branch
 
-In the command line, to create a new branch and immediately switch to it, you run `git checkout -b <branch_name>`.
+In the command line, to create a new branch and immediately switch to it, you run
+```bash
+git checkout -b <branch_name>
+```
+
 If, for some reason, you want to simply create a new branch but remain in the
-current one, you can use `git branch <branch_name>`.
+current one, you can use 
+```
+git branch <branch_name>
+```
 
 In SourceTree, just press the `Branch` button:
 ![SourceTree - Create branch](img/sourcetree-createbranch.png)
@@ -66,8 +73,16 @@ So, let's say we created a branch named `first_branch`. This is what we get:
 As said before, branches in git are simply pointers to commits. And, as we saw
 in [the previous
 article](https://sites.google.com/a/coolblue.nl/it-wiki/algemeen/version-control/git-an-introduction/1-git-basics#TOC-Checkout),
-you can (in the command line) checkout a commit by running `git checkout`. So,
-in the command line, you can checkout a branch by doing `git checkout branch_name`.
+you can (in the command line) checkout a commit by running 
+```bash
+git checkout
+``` 
+
+So, in the command line, you can checkout a branch by doing 
+```bash
+git checkout branch_name
+```
+
 In SourceTree, you right-click the branch you want to select and choose the
 `Checkout <branch>...` option.
 ![SourceTree - Checkout branch](img/sourcetree-checkoutbranch.png)
@@ -139,10 +154,10 @@ The most basic way in which you can solve conflicts is manually, i.e. edit the
 conflicted file directly and solve the conflict there. Conflicting changes are
 left in the file, marked with the commit they belong to:
 
-![Branching how to - Solving conflicts manually](img/branching/conflicts.png)
-(The top name (HEAD) refers to the branch you are merging *into* (HEAD means the
-last commit made in the current branch). The bottom one (first\_branch) refers to
-the branch you are merging *from*).
+![Branching how to - Solving conflicts
+manually](img/branching/conflicts_manually.png)
+(The top name (`HEAD`) refers to the branch you are merging *into*. The bottom one
+ (`first_branch`) refers to the branch you are merging *from*).
 
 In this case, the steps to solve conflicts are:
 * Edit the conflicted files so that they are in the "correct" state. Remove the
@@ -192,7 +207,7 @@ You can do that in two ways (for both of them, p4merge must be in your PATH):
   ```
 
   In both cases, if you don't specify a file, git will ask you to run the merge
-  tool in each of the relevant files (conflicted for `mergetool`, all of them
+  tool in each of the relevant files (conflicted files for `mergetool`, all of them
   for `difftool`).
   For more information, check these links:
   * [Documentation about difftool](http://git-scm.com/docs/git-difftool.html)
@@ -208,7 +223,7 @@ You can do that in two ways (for both of them, p4merge must be in your PATH):
   There you just have to set `p4merge` as the external `diff` and `merge` tool,
   as in the image.
 
-  Then, when to use it:
+  Then, to use it:
   * For differences:
     Right-click a file you want to diff (in a different commit) and select
     `External Diff`:
@@ -216,7 +231,7 @@ You can do that in two ways (for both of them, p4merge must be in your PATH):
     ![SourceTree - External Diff](img/branching/sourcetree-extdiff.png)
 
   * For conflicts:
-    Right-click a conflicted file and select `External merge`:
+    Right-click a conflicted file and select `Resolve conflicts` > `External merge`:
 
     ![SourceTree - External Merge](img/branching/sourcetree-extmerge.png)
 
@@ -280,3 +295,6 @@ the fix as well).
 new branch back into `master`.
 * Now that all the new changes are back in `master`, you can delete the feature
 branch and start the process all over again.
+
+
+Next up, the [distributed features]() of git! 
